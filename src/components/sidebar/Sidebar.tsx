@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Sidebar.scss"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AddIcon from '@mui/icons-material/Add';
@@ -9,19 +9,31 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import { auth, db } from '../../firebase';
 import { useAppSelector } from '../../app/hooks';
 // import { collection, query } from 'firebase/firestore/lite'; //ここのliteが不要かも
-import { collection, query } from 'firebase/firestore';
+import { DocumentData, collection, query } from 'firebase/firestore';
 import { QueryDocumentSnapshot, QuerySnapshot, onSnapshot } from "firebase/firestore";
 
-const Sidebar = () => {
-    const user = useAppSelector((state)=>state.user);
+interface Channel{
+    id:string,
+    channel:DocumentData;
+}
 
+const Sidebar = () => {
+    const [channles,setChannels] = useState<Channel[]>([]);
+
+    const user = useAppSelector((state)=>state.user);
     const q = query(collection(db,"channles"));
 
     useEffect(() =>{
-        onSnapshot(q,(querySnapshot=>{
-            const channlesResults = [];
-            querySnapshot.docs.forEach((doc) => console.log(doc))
-        }));
+        onSnapshot(q,(querySnapshot)=>{
+            const channlesResults: Channel[] = [];
+            querySnapshot.docs.forEach((doc) => 
+                channlesResults.push({
+                    id:doc.id,
+                    channel:doc.data(),
+                })
+            );
+            setChannels(channlesResults);
+        });
     },[]);
 
 
@@ -56,10 +68,12 @@ const Sidebar = () => {
                 </div>
 
                 <div className='sidebarChannelList'>
+                    {channles.map((channel) => (
+                        <SidebarChannel/>
+                    ))}                    
+                    {/* <SidebarChannel/>
                     <SidebarChannel/>
-                    <SidebarChannel/>
-                    <SidebarChannel/>
-                    <SidebarChannel/>
+                    <SidebarChannel/> */}
                 </div>
 
 
