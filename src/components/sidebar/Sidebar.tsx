@@ -18,21 +18,23 @@ interface Channel{
 }
 
 const Sidebar = () => {
-    const [channles,setChannels] = useState<Channel[]>([]);
+    const [channels,setChannels] = useState<Channel[]>([]);
 
     const user = useAppSelector((state)=>state.user);
-    const q = query(collection(db,"channles"));
+    const q = query(collection(db,"channels"));
 
     useEffect(() =>{
         onSnapshot(q,(querySnapshot)=>{
-            const channlesResults: Channel[] = [];
+            const channelsResults: Channel[] = [];
             querySnapshot.docs.forEach((doc) => 
-                channlesResults.push({
+                // console.log(doc.id,doc.data())
+                // console.log("テスト")
+                channelsResults.push({
                     id:doc.id,
                     channel:doc.data(),
                 })
             );
-            setChannels(channlesResults);
+            setChannels(channelsResults);
         });
     },[]);
 
@@ -68,12 +70,9 @@ const Sidebar = () => {
                 </div>
 
                 <div className='sidebarChannelList'>
-                    {channles.map((channel) => (
-                        <SidebarChannel/>
+                    {channels.map((channel) => (
+                        <SidebarChannel channel={channel} id={channel.id} key={channel.id}/>
                     ))}                    
-                    {/* <SidebarChannel/>
-                    <SidebarChannel/>
-                    <SidebarChannel/> */}
                 </div>
 
 
