@@ -8,7 +8,7 @@ import HeadphonesIcon from '@mui/icons-material/Headphones';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { auth, db } from '../../firebase';
 import { useAppSelector } from '../../app/hooks';
-import { DocumentData, collection, query } from 'firebase/firestore';
+import { DocumentData, addDoc, collection, query } from 'firebase/firestore';
 import { QueryDocumentSnapshot, QuerySnapshot, onSnapshot } from "firebase/firestore";
 import useCollection from '../../hooks/useCollection';
 
@@ -20,6 +20,16 @@ interface Channel{
 const Sidebar = () => {
     const user = useAppSelector((state)=>state.user);
     const {documents:channels} = useCollection("channels");
+
+    const addChannel = async() => {
+        let channelName:string|null = prompt("新しいチャンネルを作成します");
+
+        if(channelName){
+            await addDoc(collection(db, "channels"), {
+                channelName: channelName,
+            })
+        }
+    }
 
   return (
     <div className='sidebar'>
@@ -48,7 +58,7 @@ const Sidebar = () => {
                         <ExpandMoreIcon/>
                         <h4>test</h4>
                     </div>
-                    <AddIcon className='sidebarAddicon'/>
+                    <AddIcon className='sidebarAddicon' onClick={() => addChannel()}/>
                 </div>
 
                 <div className='sidebarChannelList'>
