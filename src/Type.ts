@@ -8,7 +8,7 @@ export interface initialUserState{
 }
 
 
-export interface initialChannelState{
+export interface InitialChannelState{
     channelId:string | null;
     channelName:string | null;
 }
