@@ -84,7 +84,8 @@ function Chat() {
             key={index}
             message={messages.message}
             timestamp={messages.timestamp}
-            user={messages.user} />
+            user={messages.user  || { uid: '', photo: '', email: '', displayName: 'Unknown User' }} />
+            //  ★追記した|| { uid: '', photo: '', email: '', displayName: 'Unknown User' }
           ))}           
            {/* <ChatMessage/>
            <ChatMessage/> */}

@@ -15,17 +15,18 @@ type Props = {
 }
 
 const ChatMessage = (props: Props) => {
-  const {message, timestamp, user} =props
+  const {message, timestamp, user} =props;
+
   return (
     <div className='message'>
         <AccountCircleIcon/>
         <div className='messageInfo'>
             <h4>
-                Tomokazu
-                <span className='messageTimestamp'>2024/04/21</span>
+                {user.displayName}
+                <span className='messageTimestamp'>{new Date(timestamp.toDate()).toLocaleString()}</span>
             </h4>
 
-            <p>メッセージ本文</p>
+            <p>{message}</p>
         </div>
     </div>
   )
