@@ -60,7 +60,7 @@ function Chat() {
     e.preventDefault();
 
     // channelsコレクションの中にあるmessagesコレクションの中にメッセージ情報を入れる
-    const collectionRef: CollectionReference<DocumentData> = collection(db,"channels",String(channelId),"meeseges");
+    const collectionRef: CollectionReference<DocumentData> = collection(db,"channels",String(channelId),"messages");
 
     const docRef: DocumentReference<DocumentData>=  await addDoc(
       collectionRef,
@@ -79,9 +79,15 @@ function Chat() {
         {/* chatMessage */}
 
         <div className='chatMessage'>
-           <ChatMessage/>
-           <ChatMessage/>
-           <ChatMessage/>
+          {messages.map((messages, index) => (
+            <ChatMessage 
+            key={index}
+            message={messages.message}
+            timestamp={messages.timestamp}
+            user={messages.user} />
+          ))}           
+           {/* <ChatMessage/>
+           <ChatMessage/> */}
         </div>
             
         {/* chatInput */}
