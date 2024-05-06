@@ -40,6 +40,8 @@ function Chat() {
       String(channelId),
       "messages"
     );
+
+    const collectionRefOrder = query(collectionRef,orderBy("timestamp"));
     
     onSnapshot(collectionRef, (snapshot) => {
       let results: Messages[] =[];
