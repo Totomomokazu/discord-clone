@@ -2,6 +2,7 @@ import React from 'react'
 import "./ChatMessage.scss"
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Timestamp } from 'firebase/firestore';
+import { Avatar } from '@mui/material';
 
 type Props = {
   timestamp:Timestamp;
@@ -19,11 +20,13 @@ const ChatMessage = (props: Props) => {
 
   return (
     <div className='message'>
-        <AccountCircleIcon/>
+        <Avatar src='user.photo'/>
         <div className='messageInfo'>
             <h4>
-                {user.displayName}
-                <span className='messageTimestamp'>{new Date(timestamp.toDate()).toLocaleString()}</span>
+                {user?.displayName}
+                {/* ?をつけるだけでエラーが消えた */}
+                <span className='messageTimestamp'>{new Date(timestamp?.toDate()).toLocaleString()}</span>
+                {/* ?をつけるだけでエラーが消えた */}
             </h4>
 
             <p>{message}</p>

@@ -7,7 +7,7 @@ import GifIcon from '@mui/icons-material/Gif';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import ChatMessage from './ChatMessage';
 import { useAppSelector } from '../../app/hooks';
-import { CollectionReference, DocumentData, DocumentReference, Timestamp, addDoc, collection, onSnapshot, serverTimestamp, snapshotEqual } from 'firebase/firestore';
+import { CollectionReference, DocumentData, DocumentReference, Timestamp, addDoc, collection, onSnapshot, orderBy, query, serverTimestamp, snapshotEqual } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 interface Messages{
@@ -41,9 +41,9 @@ function Chat() {
       "messages"
     );
 
-    const collectionRefOrder = query(collectionRef,orderBy("timestamp"));
+    const collectionRefOrder = query(collectionRef,orderBy("timestamp","asc"));
     
-    onSnapshot(collectionRef, (snapshot) => {
+    onSnapshot(collectionRefOrder, (snapshot) => {
       let results: Messages[] =[];
       snapshot.docs.forEach((doc) => {
         results.push({
@@ -71,7 +71,8 @@ function Chat() {
         timestamp:serverTimestamp(),
         user:user,
     });
-    console.log(docRef)
+    // console.log(docRef);
+    setInputText("");
   };
   
   return (
@@ -104,7 +105,10 @@ function Chat() {
                 className='chatInputButtun'
                 onClick={(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>
                   sendMessage(e)
-                }>
+                }
+                value={inputText}
+                
+                >
                   送信
                   </button>
             </form>
