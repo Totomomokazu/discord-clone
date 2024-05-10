@@ -21,4 +21,5 @@ export const usersSlice=createSlice({
 // console.log(usersSlice);
 
 export const {login,logout} = usersSlice.actions;
+// exportしてlogin、logoutの関数を表示する
 export default usersSlice.reducer;
