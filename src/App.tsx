@@ -1,3 +1,4 @@
+// srcディレクトリのapp.tsxが起点になっている
 import React, { useEffect } from 'react';
 import './App.scss';
 import Sidebar from './components/sidebar/Sidebar';
