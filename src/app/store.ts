@@ -1,3 +1,5 @@
+// これがReduxのstore情報が格納されているファイル
+
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "../features/userSlice";
 import channelReducer from "../features/channelSlice";
