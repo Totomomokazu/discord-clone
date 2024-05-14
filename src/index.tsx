@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={store}> //Storeをアプリ全体使えるようにするためのコード
       <App />
     </Provider>
   </React.StrictMode>

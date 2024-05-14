@@ -4,11 +4,12 @@ import { initialUserState } from "../Type";
 const initialState: initialUserState = {
     user:null,
 }
-// 上記の記述はType.tsで定義された「initialUserState」で定義されているもの
+// 上記の記述はType.tsで定義された「initialUserState」で定義されているものを呼び出している
+
 
 export const usersSlice=createSlice({
     name:"user",
-    initialState,
+    initialState, //↑のinitialStateを呼び出している
     reducers:{
         login:(state,action) =>{
             state.user=action.payload;
