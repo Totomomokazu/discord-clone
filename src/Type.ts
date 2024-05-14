@@ -1,4 +1,4 @@
-// 型を一括で設定する
+// 型を一括で設定するファイル
 export interface initialUserState{
     user:null | {
         uid:string;
