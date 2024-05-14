@@ -4,6 +4,7 @@ import { initialUserState } from "../Type";
 const initialState: initialUserState = {
     user:null,
 }
+// 上記の記述はType.tsで定義された「initialUserState」で定義されているもの
 
 export const usersSlice=createSlice({
     name:"user",
