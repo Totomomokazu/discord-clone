@@ -19,7 +19,6 @@ function App() {
   const user=useAppSelector((state) => state.user.user);
   // const user=null;
   // console.log(user);
-
   const dispatch = useAppDispatch();
 
   useEffect(()=>{
@@ -40,7 +39,7 @@ function App() {
 
   return (
     <div className="App">
-      {user ? (
+      {user ? ( //ここは条件分岐。Trueの時にチャット画面が表示され、Falseの時にLogin画面が表示される
         <>
           <ErrorBoundary FallbackComponent={ErrorFallBack} >
              <Sidebar />
