@@ -16,7 +16,7 @@ import { ErrorFallBack } from "./utils/ErrorFallBack";
 function App() {
 
 
-  const user=useAppSelector((state) => state.user.user);
+  const user=useAppSelector((state) => state.user.user); //ここでuser情報を取得するための変数を定義し、useAppSelecterを定義している
   // const user=null;
   // console.log(user);
   const dispatch = useAppDispatch();
