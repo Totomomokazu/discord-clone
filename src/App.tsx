@@ -21,6 +21,9 @@ function App() {
   // console.log(user);
   const dispatch = useAppDispatch();
 
+  // userEffectとは、Reactで定義されているhooksのうちの1種類の概念。
+  // 関数コンポーネントで副作用（データのフェッチ、DOMの操作、サブスクリプションの設定など）を扱うためのHook
+  // 買い物リストが変わるたびに何かをする、たとえば「リストが変わったら、メモを更新する」などの動作に使う。
   useEffect(()=>{
     auth.onAuthStateChanged((loginUser)=>{
       console.log(loginUser)
