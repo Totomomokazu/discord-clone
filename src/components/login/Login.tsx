@@ -6,6 +6,7 @@ import { auth, provider } from '../../firebase';
 
 const Login = () => {
 
+    // 下記はLoginボタンが押下されたときに発動されるsignIn関数を定義している。
     const signIn=()=>{
         signInWithPopup(auth, provider).then((result) => {
             // This gives you a Google Access Token. You can use it to access the Google API.
@@ -35,7 +36,8 @@ const Login = () => {
             <img src='./discordIcon.png' alt=''/>
         </div>
 
-        <Button onClick={signIn}>Login</Button>
+        <Button onClick={signIn}>Login</Button> 
+        {/* ログインボタンを押下(click)したら関数が発生するようにコードが書かれている */}
     </div>
   )
 }
