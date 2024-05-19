@@ -20,6 +20,7 @@ interface Channel{
 const Sidebar = () => {
     const user = useAppSelector((state)=>state.user.user);
     const {documents:channels} = useCollection("channels");
+    // ここら辺はFirebaseの公式ドキュメントに沿って書いているだけなはず
 
     const addChannel = async() => {
         let channelName:string|null = prompt("新しいチャンネルを作成します");
