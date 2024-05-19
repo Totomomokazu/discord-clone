@@ -63,7 +63,7 @@ const Sidebar = () => {
                 </div>
 
                 <div className='sidebarChannelList'>
-                    {channels.map((channel) => (
+                    {channels.map((channel) => ( //チャンネル名をmap関数で展開している。
                         <SidebarChannel channel={channel} id={channel.id} key={channel.id}/>
                     ))}                    
                 </div>

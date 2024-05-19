@@ -4,7 +4,7 @@ import { QueryDocumentSnapshot, QuerySnapshot, onSnapshot, Query } from "firebas
 import { db } from '../firebase';
 
 
-interface Channels{
+interface Channels{ //typescriptを用いているので型を宣言する必要がある。ここで宣言している。
     id:string,
     channel:DocumentData;
 }
@@ -12,19 +12,15 @@ interface Channels{
 
 
 const useCollection = (data:string) => {
-    const [documents,setDocuments] = useState<Channels[]>([]);
+    const [documents,setDocuments] = useState<Channels[]>([]); //usestateで管理するためにuseStateを宣言している
     const collectionRef: Query<DocumentData> = query(collection(db,data));
     
     useEffect(() =>{
-        
-
         onSnapshot(collectionRef,(querySnapshot)=>{
             const channelsResults: Channels[] = [];
-            querySnapshot.docs.forEach((doc) => 
-                // console.log(doc.id,doc.data())
-                // console.log("テスト")
+            querySnapshot.docs.forEach((doc) =>  //forEachで展開している
                 channelsResults.push({
-                    id:doc.id,
+                    id:doc.id, //interfaceで宣言されているidとchannelがここにつながる。
                     channel:doc.data(),
                 })
             );
