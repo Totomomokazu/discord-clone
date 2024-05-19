@@ -1,3 +1,7 @@
+// カスタムHooksを作って再利用する
+// HooksとはuseStateや、useEffectなど関数コンポーネントに状態やライフサイクル機能を追加するための機能
+// カスタムHooksは、Reactの標準Hooksを組み合わせて作成する、ユーザー定義のHooksを指す。
+// このカスタムHooksをuseCollectionと呼んでいる
 import React, { useEffect, useState } from 'react'
 import { CollectionReference, DocumentData, collection, query } from 'firebase/firestore';
 import { QueryDocumentSnapshot, QuerySnapshot, onSnapshot, Query } from "firebase/firestore";

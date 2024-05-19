@@ -10,7 +10,7 @@ import { auth, db } from '../../firebase';
 import { useAppSelector } from '../../app/hooks';
 import { DocumentData, addDoc, collection, query } from 'firebase/firestore';
 import { QueryDocumentSnapshot, QuerySnapshot, onSnapshot } from "firebase/firestore";
-import useCollection from '../../hooks/useCollection';
+import useCollection from '../../hooks/useCollection'; //カスタムhooksを呼び出している
 
 interface Channel{
     id:string,
@@ -20,7 +20,7 @@ interface Channel{
 const Sidebar = () => {
     const user = useAppSelector((state)=>state.user.user);
     const {documents:channels} = useCollection("channels");
-    // ここら辺はFirebaseの公式ドキュメントに沿って書いているだけなはず
+    // カスタムhooksを呼び出している
 
     const addChannel = async() => {
         let channelName:string|null = prompt("新しいチャンネルを作成します");
