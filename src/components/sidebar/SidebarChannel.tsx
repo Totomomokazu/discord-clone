@@ -11,10 +11,10 @@ type Props ={
 
 // Propsを定義することで、チャンネル名をFirebaseから受け取っている
 const SidebarChannel = (props: Props)=> {
-  const {id,channel}=props;
-  const dispatch = useAppDispatch()
+  const {id,channel}=props; 
+  const dispatch = useAppDispatch() //dispacthを呼び込む
   return (
-    <div className='sidebarChannel' 
+    <div className='sidebarChannel'  //click時にdispatchを使ってchannelSliceで定義したsetChannelInfoを呼び出す
       onClick={()=> 
         dispatch(
           setChannelInfo({
