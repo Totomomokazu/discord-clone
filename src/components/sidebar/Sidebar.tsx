@@ -22,7 +22,7 @@ const Sidebar = () => {
     const {documents:channels} = useCollection("channels");
     // カスタムhooksを呼び出している
 
-    const addChannel = async() => {
+    const addChannel = async() => { //addChannelという関数を作成
         let channelName:string|null = prompt("新しいチャンネルを作成します");
 
         if(channelName){
@@ -60,6 +60,7 @@ const Sidebar = () => {
                         <h4>test</h4>
                     </div>
                     <AddIcon className='sidebarAddicon' onClick={() => addChannel()}/>
+                    {/* ↑で、onClickイベントを定義し、clickされたときにaddChannelを呼び起こす */}
                 </div>
 
                 <div className='sidebarChannelList'>
