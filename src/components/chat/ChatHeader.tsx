@@ -7,19 +7,20 @@ import SearchIcon from '@mui/icons-material/Search';
 import SendIcon from '@mui/icons-material/Send';
 import HelpIcon from '@mui/icons-material/Help';
 
-type Props ={
+type Props ={ //propsを定義
     channelName:string | null;    
 };
 
 const ChatHeader =(props:Props)=>{
-    const {channelName} = props;
+    const {channelName} = props;//propsを用いてchannelNameを変更する
 
   return (
     <div className='ChatHeader'>
         <div className='chatHeaderLeft'>
             <h3>
                 <span className='chatHeaderHash'> #</span>
-                {channelName}
+                {channelName} 
+                {/* ChateHeader関数で変更されたchannelNameを反映する */}
             </h3> 
         </div>
 
