@@ -8,8 +8,8 @@ import channelReducer from "../features/channelSlice";
 
 export const store =configureStore({
     reducer:{
-        user:userReducer,
-        channel: channelReducer,
+        user:userReducer, //userのreducerとして定義する
+        channel: channelReducer, //channelのreducerとして定義する
     },        
 })
 
