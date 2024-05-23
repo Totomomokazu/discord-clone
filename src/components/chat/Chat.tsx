@@ -103,7 +103,8 @@ function Chat() {
                 <button 
                 type='submit' 
                 className='chatInputButtun'
-                onClick={(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>
+                onClick={(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=> 
+                  //onclickでクリック発生時に発生するクリックイベントを定義。
                   sendMessage(e)
                 }
                 value={inputText}
