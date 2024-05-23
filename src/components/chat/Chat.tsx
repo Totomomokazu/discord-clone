@@ -23,7 +23,7 @@ interface Messages{
 
 
 function Chat() {
-  const [inputText,setInputText] = useState<string>("");
+  const [inputText,setInputText] = useState<string>(""); //chatのメッセージを受け取るためにもconstでusestateを定義している
   // 文字列を受け取るための状態変数を定義
   const [messages,setMessages] = useState<Messages[]>([]);
   const channelName = useAppSelector((state)=>state.channel.channelName);
