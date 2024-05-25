@@ -89,9 +89,7 @@ function Chat() {
             timestamp={messages.timestamp}
             user={messages.user  || { uid: '', photo: '', email: '', displayName: 'Unknown User' }} />
             //  ★追記した|| { uid: '', photo: '', email: '', displayName: 'Unknown User' }
-          ))}           
-           {/* <ChatMessage/>
-           <ChatMessage/> */}
+          ))}
         </div>
             
         {/* chatInput */}
