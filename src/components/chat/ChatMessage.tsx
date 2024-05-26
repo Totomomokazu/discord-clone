@@ -4,7 +4,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Timestamp } from 'firebase/firestore';
 import { Avatar } from '@mui/material';
 
-type Props = {
+type Props = { //Propsで型を指定
   timestamp:Timestamp;
   message:string;
   user:{
@@ -16,7 +16,7 @@ type Props = {
 }
 
 const ChatMessage = (props: Props) => {
-  const {message, timestamp, user} =props;
+  const {message, timestamp, user} =props;  //定義した変数をpropsで準備
 
   return (
     <div className='message'>
@@ -24,12 +24,14 @@ const ChatMessage = (props: Props) => {
         <div className='messageInfo'>
             <h4>
                 {user?.displayName}
+                {/* 定義した変数userでuserNameを受け取り表示させる */}
                 {/* ?をつけるだけでエラーが消えた */}
                 <span className='messageTimestamp'>{new Date(timestamp?.toDate()).toLocaleString()}</span>
                 {/* ?をつけるだけでエラーが消えた */}
             </h4>
 
             <p>{message}</p>
+            {/* 定義した変数messageでmessageを受け取り表示させる */}
         </div>
     </div>
   )
