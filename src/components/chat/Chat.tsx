@@ -43,7 +43,7 @@ function Chat() {
 
     const collectionRefOrder = query(collectionRef,orderBy("timestamp","asc"));
     
-    onSnapshot(collectionRefOrder, (snapshot) => {
+    onSnapshot(collectionRefOrder, (snapshot) => { //onSnapshotはfirebaseで用意されている関数。sidebarの名前を取得するときも使っていた
       let results: Messages[] =[];
       snapshot.docs.forEach((doc) => {   //for Each文とはif文と同じ。こちらの方if文よりもきれいで見やすいからこの方法で記述している
         results.push({
