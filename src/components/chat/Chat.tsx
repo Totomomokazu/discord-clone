@@ -45,7 +45,7 @@ function Chat() {
     
     onSnapshot(collectionRefOrder, (snapshot) => {
       let results: Messages[] =[];
-      snapshot.docs.forEach((doc) => {
+      snapshot.docs.forEach((doc) => {   //for Each文とはif文と同じ。こちらの方if文よりもきれいで見やすいからこの方法で記述している
         results.push({
           timestamp: doc.data().timestamp,
           message: doc.data().message,
@@ -63,6 +63,7 @@ function Chat() {
 
     // channelsコレクションの中にあるmessagesコレクションの中にメッセージ情報を入れる
     const collectionRef: CollectionReference<DocumentData> = collection(db,"channels",String(channelId),"messages");
+    // sidebart.tsxと同じようなコードになる
 
     const docRef: DocumentReference<DocumentData>=  await addDoc(
       collectionRef,

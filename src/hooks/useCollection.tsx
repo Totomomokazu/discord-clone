@@ -22,7 +22,7 @@ const useCollection = (data:string) => {
     useEffect(() =>{
         onSnapshot(collectionRef,(querySnapshot)=>{
             const channelsResults: Channels[] = [];
-            querySnapshot.docs.forEach((doc) =>  //forEachで展開している
+            querySnapshot.docs.forEach((doc) =>  //forEachで展開している。for Each文とはif文と同じ。こちらの方if文よりもきれいで見やすいからこの方法で記述している
                 channelsResults.push({
                     id:doc.id, //interfaceで宣言されているidとchannelがここにつながる。
                     channel:doc.data(),
