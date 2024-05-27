@@ -23,10 +23,10 @@ const Sidebar = () => {
     // カスタムhooksを呼び出している
 
     const addChannel = async() => { //addChannelという関数を作成
-        let channelName:string|null = prompt("新しいチャンネルを作成します");
+        let channelName:string|null = prompt("新しいチャンネルを作成します"); //promptという関数はfirebaseとは別で定義されている関数
 
         if(channelName){
-            await addDoc(collection(db, "channels"), {
+            await addDoc(collection(db, "channels"), { //channelNameを取得する関数
                 channelName: channelName,
             })
         }
